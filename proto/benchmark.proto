@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/protobuf/timestamp.proto";
+
+message FooRequest {}
+
+message FooResponse {}
+
+service BenchmarkService {
+  rpc Foo(FooRequest) returns (FooResponse);
+}
+
+message Payload {
+    bytes data = 1;
+}
+
+message Container {
+    int32 id = 1;
+    optional int32 other_id = 2;
+    repeated Payload payload = 3;
+}
